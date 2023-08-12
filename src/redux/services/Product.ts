@@ -33,7 +33,7 @@ export const ProductListingApi = async (data: any) => {
 
   try {
     const res = await postRequest(PRODUCT_LIST, formData)
-    if (res.status !== true) ErrorDialog(res.message)
+    if (res.status !== true) ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)
@@ -52,7 +52,7 @@ export const DeleteSubCategoryAPi = async (data: any) => {
   try {
     const res = await postRequest(DELETE_SUBCATEGORY, formData)
     if (res.status === true) SuccessDialog(res.message)
-    else ErrorDialog(res.message)
+    else ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)
@@ -74,7 +74,7 @@ export const ChangeSubCategoryStatus = async (data: any) => {
   try {
     const res = await postRequest(CHANGE_SUBCATEGORY_STATUS, formData)
     if (res.status === true) SuccessDialog(res.message)
-    else ErrorDialog(res.message)
+    else ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)
@@ -96,7 +96,7 @@ export const ChangeProductStatus = async (data: any) => {
   try {
     const res = await postRequest(CHANGE_PRODUCT_STATUS, formData)
     if (res.status === true) SuccessDialog(res.message)
-    else ErrorDialog(res.message)
+    else ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)
@@ -158,7 +158,7 @@ export const CreateProduct = async (data: any) => {
     }
 
     if (res.status === true) SuccessDialog(res.message)
-    else ErrorDialog(res.message)
+    else ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)
@@ -182,7 +182,7 @@ export const UploadProductImage = async (data: any, isPop = true) => {
     const res = await postRequest(UPLOAD_PRODUCT_IMAGE, formData)
     if (isPop) {
       if (res.status === true) SuccessDialog(res.message)
-      else ErrorDialog(res.message)
+      else ErrorDialog(res)
     }
     return res
   } catch (error) {
@@ -211,7 +211,7 @@ export const addProductAddon = async (data: any, isPop = true) => {
     const res = await postRequest(ADD_ADDONS, formData)
     if (isPop) {
       if (res.status === true) SuccessDialog(res.message)
-      else ErrorDialog(res.message)
+      else ErrorDialog(res)
     }
     return res
   } catch (error) {
@@ -243,7 +243,7 @@ export const addProductParameter = async (data: any, isPop = true) => {
     const res = await postRequest(ADD_PARAMETERS, formData)
     if (isPop) {
       if (res.status === true) SuccessDialog(res.message)
-      else ErrorDialog(res.message)
+      else ErrorDialog(res)
     }
     return res
   } catch (error) {
@@ -275,7 +275,7 @@ export const DuplicateProduct = async (data: any) => {
   try {
     const res = await postRequest(CREATE_PRODUCT, formData)
     if (res.status === true) SuccessDialog(res.message)
-    else ErrorDialog(res.message)
+    else ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)

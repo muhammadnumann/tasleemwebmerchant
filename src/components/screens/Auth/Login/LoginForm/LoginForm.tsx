@@ -34,6 +34,7 @@ const LoginForm = () => {
       ErrorDialog(response.error?.password[0])
       setLoading(false)
     } else {
+      setLoading(false)
       dispatch(AuthLogin({ payload: response }))
       window.location.href = `/`
     }

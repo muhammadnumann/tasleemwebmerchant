@@ -30,9 +30,9 @@ const MenuCats: FC<IMenuCats> = (props) => {
       const res = await ProductSubCategory()
       props.setCatId({ id: res.data[0].id, is_stop: res.data[0].is_stop == 1 ? true : false })
       setResult(res.data)
-      if (res.status == true)
-        setloading(false)
+      setloading(false)
     } catch (error) {
+      setloading(false)
       ErrorDialog(error)
     }
   }

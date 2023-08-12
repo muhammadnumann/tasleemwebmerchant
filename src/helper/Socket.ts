@@ -5,9 +5,9 @@ const socketInitializer = async () => {
   const formData = new FormData()
   formData.append('id', '293')
   formData.append('type', '1')
-  setInterval(async () => {
-    await axios.post('https://tasleem.in/api/frontend/web/index.php?r=api/account-retailer/simulate-notification', formData)
-  }, 1000 * 5)
+  // setInterval(async () => {
+  //   await axios.post('https://tasleem.in/api/frontend/web/index.php?r=api/account-retailer/simulate-notification', formData)
+  // }, 1000 * 5)
 
   // const socket = io('https://tasleem.in/api/frontend/web/index.php?r=api/account-retailer/simulate-notification');
 

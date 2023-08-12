@@ -1,8 +1,13 @@
-import Swal from 'sweetalert2';
 import { message as MessageAlert } from 'antd'
 
 export const ErrorDialog = (msg: any) => {
-  MessageAlert.error(msg.message)
+  console.log(msg)
+  const error = msg?.error
+  let errorMessag = ""
+  for (const key in error) {
+    errorMessag = errorMessag + error[key]
+  }
+  MessageAlert.error(msg.message ? msg.message + ' : ' : msg + errorMessag)
 };
 export const SuccessDialog = (msg: any) => {
   MessageAlert.success(msg)

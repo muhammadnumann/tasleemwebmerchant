@@ -31,9 +31,8 @@ const DirectDiscountTable = ({ data }: any) => {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true)
     try {
-      const res = await UpdateDirectOffer(data);
-      if (res.status == true)
-        setLoading(false)
+      await UpdateDirectOffer(data);
+      setLoading(false)
     } catch (error) {
       setLoading(false)
     }

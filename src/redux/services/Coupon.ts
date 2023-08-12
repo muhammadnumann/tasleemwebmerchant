@@ -14,7 +14,7 @@ export const CouponsListingApi = async () => {
 
   try {
     const res = await postRequest(GET_COUPONS, formData)
-    if (res.status !== true) ErrorDialog(res.message)
+    if (res.status !== true) ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)
@@ -31,7 +31,7 @@ export const DirectOfferApi = async () => {
 
   try {
     const res = await postRequest(DIRECT_OFFER_DETAIL, formData)
-    if (res.status !== true) ErrorDialog(res.message)
+    if (res.status !== true) ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)
@@ -52,7 +52,7 @@ export const UpdateDirectOffer = async (data: any) => {
   try {
     const res = await postRequest(UPDATE_DIRECT_OFFER_DETAIL, formData)
     if (res.status === true) SuccessDialog(res.message)
-    else ErrorDialog(res.message)
+    else ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)
@@ -73,7 +73,7 @@ export const AddCoupon = async (data: any, url: string) => {
   try {
     const res = await postRequest(url, formData)
     if (res.status === true) SuccessDialog(res.message)
-    else ErrorDialog(res.message)
+    else ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)

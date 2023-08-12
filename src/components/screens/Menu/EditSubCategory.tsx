@@ -44,7 +44,7 @@ function EditSubCategory({ data, closeModal, setIsOpen, isOpen }: any) {
         setloading(false)
       } else {
         setloading(false)
-        ErrorDialog(res.message)
+        ErrorDialog(res)
       }
     } catch (error) {
       setloading(false)

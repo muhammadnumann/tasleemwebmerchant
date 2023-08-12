@@ -89,10 +89,11 @@ function ProductManagerModal() {
       if (res.status == true) {
         reset()
         dispatch(ApiCalled())
-        setloading(false)
         closeModal()
       }
+      setloading(false)
     } catch (error) {
+      setloading(false)
     }
   })
 

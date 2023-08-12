@@ -37,7 +37,7 @@ function AddNewCategory({ closeModal, setIsOpen, isOpen }: any) {
         dispatch(ApiCalled())
         setloading(false)
       } else {
-        ErrorDialog(res.message)
+        ErrorDialog(res)
         setloading(false)
       }
     } catch (error) {

@@ -58,7 +58,7 @@ export const ProductOrderConfirmApi = async (data: any) => {
     if (res.status === true) {
       SuccessDialog(res.message)
     } else
-      ErrorDialog(res.message);
+      ErrorDialog(res);
 
     return res
   } catch (error) {
@@ -83,7 +83,7 @@ export const ProductOrderReadyApi = async (data: any) => {
     if (res.status === true) {
       SuccessDialog(res.message)
     } else
-      ErrorDialog(res.message);
+      ErrorDialog(res);
 
     return res
   } catch (error) {
@@ -108,7 +108,7 @@ export const ProductOrderCancelApi = async (data: any) => {
     if (res.status === true) {
       SuccessDialog(res.message)
     } else
-      ErrorDialog(res.message);
+      ErrorDialog(res);
 
     return res
   } catch (error) {

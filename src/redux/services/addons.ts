@@ -95,10 +95,9 @@ export const EditProductHandler = async (data: any) => {
         { images, product_id: data?.id },
         false
       )
-    debugger
     const res = await postRequest(UPDATE_PRODUCT, formData)
     if (res.status === true) SuccessDialog(res.message)
-    else ErrorDialog(res.message)
+    else ErrorDialog(res)
     return res
   } catch (error) {
     ErrorDialog(error)

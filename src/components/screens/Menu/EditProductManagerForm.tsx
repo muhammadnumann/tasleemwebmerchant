@@ -138,9 +138,11 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
       if (res.status == true) {
         dispatch(ApiCalled())
         closeModal()
-        setloading(false)
       }
-    } catch (error) { }
+      setloading(false)
+    } catch (error) {
+      setloading(false)
+    }
   })
 
   return (

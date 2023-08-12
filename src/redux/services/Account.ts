@@ -43,7 +43,7 @@ export const EditManageProfile = async (data: any) => {
     if (res.status === true) {
       SuccessDialog(res.message)
     } else
-      ErrorDialog(res.message);
+      ErrorDialog(res);
     return res
   } catch (error) {
     ErrorDialog(error);
@@ -64,7 +64,7 @@ export const UpdateTimeSetup = async (data: any) => {
     if (res.status === true) {
       SuccessDialog(res.message)
     } else
-      ErrorDialog(res.message);
+      ErrorDialog(res);
     return res
   } catch (error) {
     ErrorDialog(error);
@@ -144,7 +144,7 @@ export const DeleteTaxApi = async (data: any) => {
     if (res.status === true) {
       SuccessDialog(res.message)
     } else
-      ErrorDialog(res.message);
+      ErrorDialog(res);
 
     return res
   } catch (error) {
