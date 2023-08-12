@@ -1,0 +1,107 @@
+{
+  "Login": {
+    "email": "معرف التاجر",
+    "password": "كلمة المرور",
+    "button": "وصول",
+    "footer-text": "جميع الحقوق محفوظة لشركة تسليم للتجارة ذ.م.م 2023"
+  },
+  "Header": {
+    "ShopStatus": {
+      "closed": "مغلق",
+      "busy": "مشغول",
+      "open": "يفتح"
+    },
+    "payout": "سيصرف",
+    "placeholder": "يبحث"
+  },
+  "Navigation": {
+    "dashboard": "لوحة القيادة",
+    "orders": "طلبات",
+    "menu": "قائمة طعام",
+    "account": "حساب"
+  },
+  "Account": {
+    "Menu": {
+      "manage-profile": "إدارة الملف الشخصي",
+      "offers-management": "إدارة العروض",
+      "taxes": "الضرائب",
+      "time-setup": "إعداد الوقت",
+      "printers": "طابعات",
+      "settings": "إعدادات",
+      "signout": "خروج",
+      "dark-mode": "الوضع المظلم"
+    },
+    "ManageProfile": {
+      "english-name": "اسم المتجر الانجليزي",
+      "arabic-name": "إسم المتجر العربي",
+      "english-desc": "وصف اللغة الإنجليزية",
+      "arabic-desc": "الوصف العربي",
+      "mobile": "متجر موبايل",
+      "email": "البريد الإلكتروني الخاص بالمتجر",
+      "app-logo": "تحميل شعار المتجر",
+      "app-banner": "تحميل شعار متجر التطبيق",
+      "list-banner": "تحميل شعار قائمة المتجر"
+    },
+    "TimeSetup": {
+      "saturday": "السبت",
+      "sunday": "الأحد",
+      "monday": "الاثنين",
+      "tuesday": "يوم الثلاثاء",
+      "wednesday": "الأربعاء",
+      "thursday": "يوم الخميس",
+      "friday": "جمعة",
+      "time-error": "تنسيق التاريخ غير صحيح! يجب أن يكون التنسيق hh:mm",
+      "apply-for-all": "تقدم للجميع"
+    },
+    "Printers": {
+      "slected_printer": "Select Printer",
+      "printer": ["Bluetooth Printer", "Sunmi V2", "FP-80WC 80mm"],
+      "serviceId": "معرف الخدمة",
+      "Characteristisc": "صفات",
+      "paper_width": "عرض الورق"
+    },
+    "Settings": {
+      "payment-setup": "إعداد الدفع:",
+      "cash-payment-accepted": "قبول الدفع النقدي",
+      "online-payment-accepted": "الدفع عبر الإنترنت مقبول",
+      "yes": "نعم",
+      "no": "لا",
+      "cash-limiting": "تحديد النقد:",
+      "minimum-cash-to-order": "الحد الأدنى للطلب النقدي",
+      "maximum-cash-to-order": "الحد الأقصى للطلب النقدي",
+      "delivery": "توصيل:",
+      "delivery-share": "حصة التسليم",
+      "use_our_driver": "استخدم سائقنا"
+    },
+    "OffersManagement": {
+      "direct-discount": "الخصم المباشر",
+      "discount-percentage": "نسبة الخصم",
+      "max-price-for-discount": "أقصى سعر للخصم",
+      "select-category": "اختر الفئة",
+      "select-all": "اختر الكل",
+      "coupon-list": "قائمة القسيمة",
+      "view-details": "عرض التفاصيل",
+      "add-coupon": "أضف عرض",
+      "CouponForm": {
+        "coupon-name": "اسم القسيمة",
+        "max-order-amount": "الحد الأقصى لمبلغ الطلب",
+        "percentage": "نسبة مئوية",
+        "number-of-uses": "عدد الاستخدامات",
+        "from-date": "من التاريخ:",
+        "to-date": "ان يذهب في موعد:"
+      }
+    }
+  },
+  "Orders": {
+    "Tabs": {
+      "new-orders": "طلبات جديدة",
+      "in-progress": "في تَقَدم",
+      "order-ready": "اطلب جاهز",
+      "in-delivery": "جاري الارسال"
+    }
+  },
+  "UI": {
+    "save-button": "يحفظ",
+    "cancel-button": "يلغي"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "Login": {
+    "email": "Merchant ID",
+    "password": "Password",
+    "button": "Access",
+    "footer-text": "All rights reserved to Tasleem Trading LLC 2023"
+  },
+  "Header": {
+    "ShopStatus": {
+      "closed": "Closed",
+      "busy": "Busy",
+      "open": "Open"
+    },
+    "payout": "Payout",
+    "placeholder": "Search"
+  },
+  "Navigation": {
+    "dashboard": "Dashboard",
+    "orders": "Orders",
+    "menu": "Menu",
+    "account": "Account"
+  },
+  "Account": {
+    "Menu": {
+      "manage-profile": "Manage Profile",
+      "offers-management": "Offers Management",
+      "taxes": "Taxes",
+      "time-setup": "Time Setup",
+      "printers": "Printers",
+      "settings": "Settings",
+      "signout": "Sign out",
+      "dark-mode": "Dark mode"
+    },
+    "ManageProfile": {
+      "english-name": "English Store Name",
+      "arabic-name": "Arabic Store Name",
+      "english-desc": "English Description",
+      "arabic-desc": "Arabic Description",
+      "mobile": "Store Mobile",
+      "email": "User Email",
+      "app-logo": "Upload store app Logo",
+      "app-banner": "Upload store app Banner",
+      "list-banner": "Upload store list Banner"
+    },
+    "TimeSetup": {
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "time-error": "Incorrect date format! The format should be hh:mm",
+      "apply-for-all": "Apply for all"
+    },
+    "Printers": {
+      "slected_printer": "Select Printer",
+      "printer": ["Bluetooth Printer", "Sunmi V2", "FP-80WC 80mm"],
+      "serviceId": "Service ID",
+      "Characteristisc": "Characteristisc",
+      "paper_width": "Paper Width"
+    },
+    "Settings": {
+      "payment-setup": "Payment Setup:",
+      "cash-payment-accepted": "Cash Payment Accepted",
+      "online-payment-accepted": "Online Payment Accepted",
+      "yes": "Yes",
+      "no": "No",
+      "cash-limiting": "Cash Limiting:",
+      "minimum-cash-to-order": "Minimum Cash to Order",
+      "maximum-cash-to-order": "Maximum Cash to Order",
+      "delivery": "Delivery:",
+      "delivery-share": "Delivery Share",
+      "use_our_driver": "Use Our Driver"
+    },
+    "OffersManagement": {
+      "direct-discount": "Direct Discount",
+      "discount-percentage": "Discount Percentage",
+      "max-price-for-discount": "Max Price for Discount",
+      "select-category": "Select Category",
+      "select-all": "Select All",
+      "coupon-list": "Coupon List",
+      "view-details": "View Details",
+      "add-coupon": "Add Coupon",
+      "CouponForm": {
+        "coupon-name": "Coupon name",
+        "max-order-amount": "Max Order Amount",
+        "percentage": "Percentage",
+        "number-of-uses": "Number of Uses",
+        "from-date": "From Date:",
+        "to-date": "To Date:"
+      }
+    }
+  },
+  "Orders": {
+    "Tabs": {
+      "new-orders": "New Orders",
+      "in-progress": "In Progress",
+      "order-ready": "Order Ready",
+      "in-delivery": "In Delivery"
+    }
+  },
+  "UI": {
+    "save-button": "Save",
+    "cancel-button": "Cancel"
+  }
+}
