@@ -1,10 +1,11 @@
+'use client'
+import dynamic from 'next/dynamic'
+const Dashboard = dynamic(() => import("@/components/screens/Dashboard/Dashboard"))
 
-import { ProductListingApi } from "@/redux/services/Product"
-import { useEffect } from "react"
-
-const DashboardPage = () => {
-
-  return <div>Dashboard</div>
+const index = () => {
+  return <>
+    <Dashboard />
+  </>
 }
 
-export default DashboardPage
+export default index

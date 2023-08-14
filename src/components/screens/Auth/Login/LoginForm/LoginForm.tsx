@@ -56,12 +56,12 @@ const LoginForm = () => {
               control,
               name: 'email',
               label: { text: t('email'), className: 'text-[#7B7878]' },
-              rules: { required: true },
+              rules: { required: { value: true, message: 'Field is Required' } },
               containerClass: `mx-auto w-full max-w-[280px] sm:max-w-[367px]`
             }}
             {...register('email', {
               required: { value: true, message: 'Field is Required' },
-              pattern: { value: /^\S+@\S+$/i, message: 'Invalid email Format' }
+              // pattern: { value: /^\S+@\S+$/i, message: 'Invalid email Format' }
             })}
           />
           {errors?.email && (
@@ -72,7 +72,7 @@ const LoginForm = () => {
               control,
               name: 'password',
               label: { text: t('password'), className: 'text-[#7B7878]' },
-              rules: { required: true },
+              rules: { required: { value: true, message: 'Field is Required' } },
               containerClass: 'mx-auto w-full max-w-[280px] sm:max-w-[367px]'
             }}
             type='password'

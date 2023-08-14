@@ -6,9 +6,11 @@ import cn from 'clsx'
 import AccountMenuItem from './AccountMenuItem'
 import AccountMenuSignout from './AccountMenuSignout'
 import { accountMenuItems } from './account-menu.data'
+import { getLocalStorage } from '@/redux/store/Auth/AuthActions'
 
 const AccountMenu = () => {
   const { isEnglish } = useLang()
+  const data = getLocalStorage("userData").userRetailer
 
   return (
     <>
@@ -19,7 +21,7 @@ const AccountMenu = () => {
         )}
       >
         <div className='text-xl font-bold text-blue-default max-w-[64%] overflow-hidden whitespace-nowrap text-ellipsis md:text-2xl'>
-          McDonald’s - New York Branch
+          {isEnglish ? data.company_name : data.company_name_arab}
         </div>
         <AccountMenuSignout />
       </div>

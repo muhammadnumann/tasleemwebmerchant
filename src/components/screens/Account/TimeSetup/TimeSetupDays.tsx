@@ -22,6 +22,7 @@ const TimeSetupDays: FC<ITimeSetupDays> = ({
   const t = useTranslations('Account.TimeSetup')
   const { isArabic } = useLang()
 
+  
   return (
     <div className='flex flex-col gap-4'>
       {fields.map((f, i) => {

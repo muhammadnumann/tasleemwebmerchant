@@ -40,7 +40,9 @@ const OrdersItem: FC<IOrder> = (props) => {
 
 
   if (!props.data?.length) {
-    return <MessageAlert text='No Order Found' />
+    return <MessageAlert
+      text={isEnglish ? 'No Order found' : 'لم يتم العثور على طلب'}
+    />
   }
 
   return (
@@ -59,11 +61,9 @@ const OrdersItem: FC<IOrder> = (props) => {
               >
                 <OrderItemStatus isActive={props.status === 'accepted'} />
                 <OrdersItemMainInfo
-                  name={
-                    isEnglish ? val.products[0].title : val.products[0].title_arab
-                  }
+                  name={val.id}
                   count={val.products[0].amount}
-                  date={val.date_updated}
+                  date={(val.date_updated_new * 1000)}
                 />
               </div>
               {props.type === 'delivery' && (
@@ -102,7 +102,7 @@ const OrdersItem: FC<IOrder> = (props) => {
           <OrderModal
             data={selectedData}
             closeModal={closeModal}
-          />
+          />  
         </Modal>
       }
 

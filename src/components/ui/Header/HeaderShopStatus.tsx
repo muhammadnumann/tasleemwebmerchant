@@ -1,44 +1,54 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import { useLang } from '@/hooks/useLang'
+import { ChangeVendorStatus, CreateTaxes } from '@/redux/services/Account'
 import { VendorStatus } from '@/redux/services/Vendor'
 import cn from 'clsx'
 import { useTranslations } from 'next-intl'
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 
-type TypeStatus = 'closed' | 'busy' | 'open'
 
 const HeaderShopStatus = () => {
-  const [status, setStatus] = useState<TypeStatus>('closed')
+  const [status, setStatus] = useState('')
   const { isEnglish } = useLang()
   const t = useTranslations('Header.ShopStatus')
 
   const fetchData = async () => {
     try {
       const res = await VendorStatus()
-      if (res.data.is_busy) {
-        setStatus("busy")
-      } else
-        setStatus(res.data?.is_open_close)
+      setStatus(res.data?.is_open_close)
     } catch (error) {
+
     }
   }
   useEffect(() => {
     fetchData()
   }, [])
+
+  const onStatusChange = async (data: any) => {
+
+    try {
+      ChangeVendorStatus({ status: data })
+    } catch (error) {
+    }
+  }
   return (
     <div className=''>
       <div className='h-6 flex items-center gap-[46px] rounded-[15px] px-3 py-0.5 bg-[#A9A9A9] sm:h-[26px]'>
         <Item
-          type='closed'
-          // setStatus={setStatus}
-          isActive={status === 'closed'}
+          type='close'
+          setStatus={setStatus}
+          submit={onStatusChange}
+          isActive={status === 'close'}
         />
         <Item type='busy'
-          // setStatus={setStatus}
+          setStatus={setStatus}
+          submit={onStatusChange}
           isActive={status === 'busy'} />
         <Item type='open'
-          // setStatus={setStatus}
+          setStatus={setStatus}
+          submit={onStatusChange}
           isActive={status === 'open'} />
       </div>
       <div
@@ -56,31 +66,34 @@ const HeaderShopStatus = () => {
 }
 
 interface IItem {
-  type: TypeStatus
+  type: any
   isActive?: boolean
-  // setStatus: (s: TypeStatus) => void
+  setStatus: (s: any) => void
+  submit?: any
 }
 
 const Item: FC<IItem> = ({
   type,
   isActive,
-  // setStatus
+  setStatus,
+  submit
 }) => {
   return (
     <div
       onClick={() => {
-        // setStatus(type)
+        setStatus(type)
+        submit(type)
       }}
       className={cn(
         'cursor-pointer min-w-[12px] min-h-[12px] max-w-[12px] max-h-[12px] rounded-full sm:min-w-[22px] sm:min-h-[22px] sm:max-w-[22px] sm:max-h-[22px]',
         {
-          'bg-[#FF3131]': type === 'closed',
+          'bg-[#FF3131]': type === 'close',
           'bg-[#FFF509]': type === 'busy',
           'bg-[#4CEF00]': type === 'open'
         },
         isActive ? 'outline outline-[8px]' : '',
         isActive && {
-          'outline-[#FF3131]/50': type === 'closed',
+          'outline-[#FF3131]/50': type === 'close',
           'outline-[#FFF509]/50': type === 'busy',
           'outline-[#4CEF00]/50': type === 'open'
         }

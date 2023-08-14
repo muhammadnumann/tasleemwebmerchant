@@ -5,14 +5,14 @@ import { useLang } from '@/hooks/useLang'
 interface value {
   name: string,
   count: number,
-  date: string
+  date: any
 }
 const OrdersItemMainInfo: FC<value> = ({ name, count, date }) => {
   const { isEnglish } = useLang()
 
   return (
     <div className='flex flex-col gap-2'>
-      <div className='text-min sm:text-xl'>{isEnglish ? "Order" : "طلب"}: {name}</div>
+      <div className='text-min sm:text-xl'>{isEnglish ? "Order #" : "طلب #"}{name}</div>
       <div className='text-min sm:text-lg text-[#5F5F5F]'>
         {isEnglish ? "Items" : "غرض"}: #{count}
       </div>

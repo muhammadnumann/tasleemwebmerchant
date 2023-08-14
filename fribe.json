@@ -1,0 +1,9 @@
+{
+  "app_key": "husky1",
+  "action": "trigger",
+  "channel": "tasleem_channel",
+  "event": "abc",
+  "data": {
+    "msg": "Hey I send some event from update_location and should receive it in update_location_ack"
+  }
+}

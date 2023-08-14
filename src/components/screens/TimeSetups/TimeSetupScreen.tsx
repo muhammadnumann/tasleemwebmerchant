@@ -15,9 +15,11 @@ import { UpdateTimeSetup } from '@/redux/services/Account'
 import { ManageProfile } from '@/redux/store/Account/AccountReducer'
 import { getLocalStorage } from '@/redux/store/Auth/AuthActions'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
+import { allTimezones, useTimezoneSelect } from 'react-timezone-select'
+import GetTimeZone from './getTimeZone'
 
 const TimeSetupscreen = () => {
   const data = getLocalStorage("userData").userRetailer
@@ -52,8 +54,10 @@ const TimeSetupscreen = () => {
     }
   ]
   const t = useTranslations('Account.TimeSetup')
-  const defaultTimeZone = data.store_timezone || 'Asia/Karachi';
+
+  const defaultTimeZone = GetTimeZone().value || 'Asia/Karachi';
   const dateTimeFormat = new Intl.DateTimeFormat(undefined, { timeZone: defaultTimeZone });
+
   const resolvedTimeZone = dateTimeFormat.resolvedOptions().timeZone;
 
   const [timezone, setTimezone] = useState(resolvedTimeZone)
@@ -81,10 +85,17 @@ const TimeSetupscreen = () => {
   })
 
   const dispatch = useDispatch()
+  const { parseTimezone } = useTimezoneSelect({
+    labelStyle: 'original',
+    timezones: allTimezones
+  })
+
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true)
+    let store_timezone = parseTimezone(timezone).offset
+    store_timezone = store_timezone ? store_timezone * 60 * 60 : undefined
     try {
-      const res = await UpdateTimeSetup({ ...data, store_timezone: timezone })
+      const res = await UpdateTimeSetup({ ...data, store_timezone })
       if (res.status === true) {
         dispatch(ManageProfile(res.data))
         setLoading(false)

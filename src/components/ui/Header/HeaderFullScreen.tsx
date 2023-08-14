@@ -15,7 +15,6 @@ const HeaderFullScreen = () => {
     }
     setIsFull(!isFull)
   }
-
   useEffect(() => {
     function exitHandler() {
       if (

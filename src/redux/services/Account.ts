@@ -1,7 +1,7 @@
 import { WeekFormat } from '@/components/screens/Account/TimeSetup/time-setup.interface';
 import { ErrorDialog, SuccessDialog } from "@/components/ui/Dailog"
 import { postRequest } from "."
-import { ACCOUNT_SETTING, ADD_PRODUCT_TAX_LIST, CREATE_TAXES, DELETE_PRODUCT_TAX_LIST, EDIT_PROFILE, EDIT_TAXES, IS_AUTHORIZED_API, PRODUCT_TAX_LIST, SETTING_API, UPDATE_TIME_SETUP } from "./ApiConstants"
+import { ACCOUNT_SETTING, ADD_PRODUCT_TAX_LIST, CHANGE_SUBCATEGORY_STATUS, CHANGE_VENDOR_STATUS, CREATE_TAXES, DELETE_PRODUCT_TAX_LIST, EDIT_PROFILE, EDIT_TAXES, IS_AUTHORIZED_API, PRODUCT_TAX_LIST, SETTING_API, UPDATE_TIME_SETUP } from "./ApiConstants"
 import { getLocalStorage } from "../store/Auth/AuthActions"
 import { UploadProductImage } from './Product';
 
@@ -225,6 +225,26 @@ export const IsAuthorizedApi = async () => {
 }
 
 
+export const ChangeVendorStatus = async (data: any) => {
+  const formData = new FormData()
+  const user = getLocalStorage('userData')
+  const token = localStorage.getItem('token')
+
+  formData.append('vendor_id', user.userRetailer.id)
+
+  for (const key in data) {
+    formData.append(key, data[key])
+  }
+
+  try {
+    const res = await postRequest(CHANGE_VENDOR_STATUS, formData)
+    if (res.status === true) SuccessDialog(res.message)
+    else ErrorDialog(res)
+    return res
+  } catch (error) {
+    ErrorDialog(error)
+  }
+}
 
 
 

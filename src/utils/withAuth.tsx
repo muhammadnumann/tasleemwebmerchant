@@ -11,14 +11,13 @@ export default function withAuth(WrappedComponent: ElementType) {
     const router = useRouter()
 
     React.useEffect(() => {
-
       async function isAuthorized() {
         try {
           const token = await IsAuthorizedApi()
-          if (token?.status) {
-            setLoading(false)
-          } else
+          if (token?.status == 'false' || token?.status == false) {
             router.replace('/login')
+          } else
+            setLoading(false)
         } catch (error) {
           setLoading(false)
         }

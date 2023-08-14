@@ -92,7 +92,7 @@ function OrderModal(props: any) {
             <div key={val.id} className='px-[30px]'>
               <div className='flex justify-between items-start'>
                 <div className='flex'>
-                  <img src={val?.Images[0].image_path} className={`${isEnglish ? "mr-2" : "ml-2"} rounded-xl`} width={54} height={54} alt="order Image" />
+                  <img src={val?.Images[0]?.image_path} className={`${isEnglish ? "mr-2" : "ml-2"} rounded-xl`} width={54} height={54} alt="order Image" />
                   <div className='mt-1'>
                     <p className='text-sm font-bold '>{isEnglish ? val.title : val.title_arab}</p>
                     <p className='text-sm  font-bold text-gray-500'>{(val.addons || []).map((addval: any, ind2: number) => (ind2 !== 0 ? " + " : "") + (isEnglish ? addval.title : addval.title_arab))}</p>
