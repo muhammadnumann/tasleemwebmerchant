@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   env: {
     NEXT_PUBLIC_API_URL: 'https://tasleem.in/api/frontend/web/index.php?'
   },

@@ -15,24 +15,25 @@ const Noticfication: React.FC = () => {
   const [api, contextHolder] = notification.useNotification();
   const data = useSelector((state: any) => state?.Dashboard?.notification)
   const [modalIsOpen, setIsOpen] = useState(false)
+  const [selectedData, setSelectedData] = useState<any>()
 
-  const openNotification = (placement: NotificationPlacement) => {
+  const openNotification = (placement: NotificationPlacement, Noticficationdata: any) => {
+    console.log(Noticficationdata)
     new Audio(sound).play()
     api.info({
-      message: `${data[0]?.title}`,
-      description: <>{data[0]?.msg}</>,
+      message: <div className='cursor-pointer'>{`${Noticficationdata?.title}`}</div>,
+      description: <div className='cursor-pointer'>{Noticficationdata?.msg}</div>,
       placement,
-      onClick: () => { setIsOpen(true) }
+      onClick: () => {
+        setIsOpen(true)
+        setSelectedData(Noticficationdata)
+      }
     });
   };
 
   useEffect(() => {
     if (data.length)
-      openNotification('bottomRight')
-    return () => {
-      if (data.length)
-        openNotification('bottomRight')
-    };
+      openNotification('bottomRight', { ...data[0] })
   }, [data])
 
   const contextValue = useMemo(() => ({ name: 'Ant Design' }), []);
@@ -46,7 +47,7 @@ const Noticfication: React.FC = () => {
 
       <Modal closeModal={closeModal} modalIsOpen={modalIsOpen}>
         <OrderModal
-          data={{ id: data[0]?.orderID }}
+          data={{ id: selectedData?.orderID }}
           closeModal={closeModal}
           type={'new'}
         />

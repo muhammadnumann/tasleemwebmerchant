@@ -21,36 +21,15 @@ const MainLayout: FC<PropsWithChildren<IMainLayout>> = ({
   children,
   params
 }) => {
-
   const dispatch = useDispatch()
-
-
   useEffect(() => {
     socket.connect()
-
-    function onConnect() {
-      console.log('connect')
-    }
-
-    function onDisconnect() {
-      console.log('disconnect')
-    }
-
-    socket.on('connect', onConnect);
     const user = getLocalStorage('userData')
     const channel_id = user?.user?.channel_id
 
     socket.on(`${channel_id}`, (data) => {
-      console.log(data)
       dispatch(AddNoticficationData({ data: data }))
-
     });
-    socket.off('disconnect', onDisconnect);
-
-    return () => {
-      socket.off('disconnect', onDisconnect);
-      socket.on('connect', onConnect);
-    };
   }, []);
 
   return (
