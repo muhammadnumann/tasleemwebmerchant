@@ -206,8 +206,6 @@ export const IsAuthorizedApi = async () => {
   const token = localStorage.getItem("token")
 
   if (!token) {
-
-    console.log('Numan')
     return { status: 'false' }
   }
   formData.append("vendor_id", user.userRetailer.id)

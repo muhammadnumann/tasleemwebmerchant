@@ -12,6 +12,8 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useLang } from '@/hooks/useLang';
+import { useSelector } from 'react-redux';
+import { ArabicDay, defaultDay } from './CustomerFlowChart';
 
 ChartJS.register(
   CategoryScale,
@@ -67,7 +69,7 @@ export function DailyRevenueChart() {
         ticks: {
           color: '#000000',
           padding: 10,
-          stepSize: 300,
+          // stepSize: 300,
         },
         border: {
           display: false
@@ -78,7 +80,7 @@ export function DailyRevenueChart() {
         ticks: {
           color: '#000000',
           padding: 10,
-          stepSize: 300,
+          // stepSize: 300,
         },
         border: {
           display: false
@@ -86,17 +88,21 @@ export function DailyRevenueChart() {
       },
     },
   };
-
+  const data1 = useSelector((state: any) => state?.Dashboard?.Data)
   const { isEnglish } = useLang()
 
-  const labels = isEnglish ? ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'] : ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'جمعة'];
+  const labels = (data1?.daily_sales || defaultDay).map((val: any) => {
+    const day: 'sat' | 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' = val.date_day.toLowerCase()
+    return (isEnglish ? val?.date_day : ArabicDay[day])
+  })
+
 
   const data = {
     labels,
     datasets: [
       {
         label: 'Dataset 1',
-        data: [300, 900, 200, 1000, 250, 1200, 1500],
+        data: (data1?.daily_sales || defaultDay).map((val: any) => val?.total_sales),
         pointRadius: 0,
         borderColor: '#1061DB',
         tension: 0.4

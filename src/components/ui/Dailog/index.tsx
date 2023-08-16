@@ -1,7 +1,6 @@
 import { message as MessageAlert } from 'antd'
 
 export const ErrorDialog = (msg: any) => {
-  console.log(msg)
   const error = msg?.error
   let errorMessag = ""
   for (const key in error) {

@@ -9,14 +9,7 @@ const HeaderFullScreen = () => {
 
   const fullHandler = () => {
     if (!isFull) {
-      // document.documentElement.requestFullscreen()
-      (document as any).webkitRequestFullscreen()
-        (document as any).webkitEnterFullscreen()
-
-      if ((document as any).webkitRequestFullscreen) (document as any).webkitRequestFullscreen();
-      else if ((document as any).mozRequestFullScreen) (document as any).mozRequestFullScreen(); // Careful to the capital S
-      else if ((document as any).msRequestFullscreen) (document as any).msRequestFullscreen();
-      else if ((document as any).webkitEnterFullscreen) (document as any).webkitEnterFullscreen(); // Magic is here for iOS
+      document.documentElement.requestFullscreen()
     } else {
       document.exitFullscreen()
     }
@@ -32,6 +25,7 @@ const HeaderFullScreen = () => {
         setIsFull(false)
       }
     }
+
     document.addEventListener('webkitfullscreenchange', exitHandler, false)
     document.addEventListener('mozfullscreenchange', exitHandler, false)
     document.addEventListener('fullscreenchange', exitHandler, false)

@@ -131,18 +131,24 @@ function OrderModal(props: any) {
       <span className='bg-[#D9D9D9] rounded-lg py-2 px-3 text-black text-sm mx-[30px] capitalize'>{result?.payment_method} {isEnglish ? "Payment" : "قسط"}</span>
 
       <div className='mt-4 '></div>
-      <div className="flex w-full gap-2 p-4" style={{ boxShadow: " 0px -2px 4px 0px rgba(0, 0, 0, 0.25)" }}>
-        <button onClick={() => {
-          handleReject(result?.id)
-        }} className='text-2xl bg-[#FF4F27] text-white uppercase  rounded-lg py-3 w-1/3' style={{ boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.25)" }}>{isEnglish ? "Reject" : "يرفض"}</button>
-        <button onClick={() => {
-          handleAccept(result?.id)
-        }} className='text-2xl flex gap-8 justify-center items-center bg-[#00C2FF] text-white uppercase  rounded-lg py-3 w-2/3' style={{ boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.25)" }}>{isEnglish ? "Accept" : "يقبل"}
-          <svg xmlns="http://www.w3.org/2000/svg" width={41} height={41} viewBox="0 0 41 41" fill="none">
-            <path d="M8.79833 18.0417V40.1667H4.84041C2.62791 40.1667 0.85791 38.3967 0.85791 36.2088V22.0242C0.85791 19.8363 2.65249 18.0417 4.84041 18.0417H8.79833ZM36.4791 14.3542H24.7283V5.75004C24.7283 3.04587 22.5158 0.833374 19.8362 0.833374H19.615C18.6316 0.833374 17.7466 1.42337 17.3533 2.33296L10.6421 18.0417V40.1667H33.2587C35.0533 40.1667 36.5775 38.8884 36.8971 37.1184L40.1421 18.6809C40.5354 16.4192 38.8146 14.3542 36.5037 14.3542H36.4791Z" fill="white" />
-          </svg>
-        </button>
-      </div>
+      {
+        props.type === 'new' && (
+          <>
+            <div className="flex w-full gap-2 p-4" style={{ boxShadow: " 0px -2px 4px 0px rgba(0, 0, 0, 0.25)" }}>
+              <button onClick={() => {
+                handleReject(result?.id)
+              }} className='text-2xl bg-[#FF4F27] text-white uppercase  rounded-lg py-3 w-1/3' style={{ boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.25)" }}>{isEnglish ? "Reject" : "يرفض"}</button>
+              <button onClick={() => {
+                handleAccept(result?.id)
+              }} className='text-2xl flex gap-8 justify-center items-center bg-[#00C2FF] text-white uppercase  rounded-lg py-3 w-2/3' style={{ boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.25)" }}>{isEnglish ? "Accept" : "يقبل"}
+                <svg xmlns="http://www.w3.org/2000/svg" width={41} height={41} viewBox="0 0 41 41" fill="none">
+                  <path d="M8.79833 18.0417V40.1667H4.84041C2.62791 40.1667 0.85791 38.3967 0.85791 36.2088V22.0242C0.85791 19.8363 2.65249 18.0417 4.84041 18.0417H8.79833ZM36.4791 14.3542H24.7283V5.75004C24.7283 3.04587 22.5158 0.833374 19.8362 0.833374H19.615C18.6316 0.833374 17.7466 1.42337 17.3533 2.33296L10.6421 18.0417V40.1667H33.2587C35.0533 40.1667 36.5775 38.8884 36.8971 37.1184L40.1421 18.6809C40.5354 16.4192 38.8146 14.3542 36.5037 14.3542H36.4791Z" fill="white" />
+                </svg>
+              </button>
+            </div>
+          </>
+        )
+      }
       {
         result &&
         <div className='absolute left-[-9999px] top-[-9999px]'>

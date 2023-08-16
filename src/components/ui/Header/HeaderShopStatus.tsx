@@ -17,7 +17,8 @@ const HeaderShopStatus = () => {
   const fetchData = async () => {
     try {
       const res = await VendorStatus()
-      setStatus(res.data?.is_open_close)
+      setStatus(res.data.is_busy ?
+        'busy' : res.data?.is_stop_order ? 'close' : 'open')
     } catch (error) {
 
     }
@@ -27,7 +28,6 @@ const HeaderShopStatus = () => {
   }, [])
 
   const onStatusChange = async (data: any) => {
-
     try {
       ChangeVendorStatus({ status: data })
     } catch (error) {

@@ -33,7 +33,6 @@ const MenuPage = () => {
   const [loading, setLoading] = useState(false)
 
   const onSubCategoryStatusChange = async (data: any) => {
-    console.log(data)
     setLoading(true)
     try {
       const res = await ChangeSubCategoryStatus({

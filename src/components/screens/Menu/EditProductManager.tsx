@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Modal from '@/components/ui/Modal'
 import { ProductDetailById } from '@/redux/services/Product'

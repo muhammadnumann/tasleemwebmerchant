@@ -4,6 +4,7 @@ import AccountReducer from './Account/AccountReducer'
 import ProductReducer from './Poduct/index'
 import ProductOrderReducer from './Order/index'
 import ApiLoading from './ApiLoading/ApiLoadingSlice'
+import Dashboard from './Dashboard/index'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     Account: AccountReducer,
     product: ProductReducer,
     order: ProductOrderReducer,
-    ApiLoading: ApiLoading
+    ApiLoading: ApiLoading,
+    Dashboard: Dashboard
   },
 })
 

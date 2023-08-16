@@ -10,6 +10,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { useLang } from '@/hooks/useLang';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(
   CategoryScale,
@@ -19,8 +20,11 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+export const defaultDay = [{ date_day: 'sat' }, { date_day: 'sun' }, { date_day: 'mon' }, { date_day: 'tue' }, { date_day: 'wed' }, { date_day: 'thu' }, { date_day: 'fri' }]
+export const ArabicDay = { sat: 'السبت', sun: 'الأحد', mon: 'الاثنين', tue: 'الثلاثاء', wed: 'الأربعاء', thu: 'الخميس', fri: 'جمعة' }
 
 export function CustomerFlowChart() {
+
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
@@ -78,9 +82,15 @@ export function CustomerFlowChart() {
     },
   };
 
+  const data1 = useSelector((state: any) => state?.Dashboard?.Data)
   const { isEnglish } = useLang()
 
-  const labels = isEnglish ? ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'] : ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'جمعة'];
+
+  const labels = (data1?.daily_sales || defaultDay).map((val: any) => {
+    const day: 'sat' | 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' = val.date_day.toLowerCase()
+    return (isEnglish ? val?.date_day : ArabicDay[day])
+  })
+
 
   const data = {
     labels,
@@ -90,8 +100,8 @@ export function CustomerFlowChart() {
         barThickness: 12,
         maxBarThickness: 9,
         minBarLength: 2,
-        label: 'Dataset 2',
-        data: [6, 4, 5, 6, 7, 1, 2, 3],
+        label: 'Total Order',
+        data: (data1?.daily_sales || defaultDay).map((val: any) => val?.total_orders),
         backgroundColor: '#1061DB',
       },
       {
@@ -99,8 +109,8 @@ export function CustomerFlowChart() {
         barThickness: 12,
         maxBarThickness: 9,
         minBarLength: 2,
-        label: 'Dataset 3',
-        data: [2, 1, 3, 4, 6, 5, 7],
+        label: 'Total Sales',
+        data: (data1?.daily_sales || defaultDay).map((val: any) => val?.total_sales),
         backgroundColor: '#D84E00',
       },
     ],

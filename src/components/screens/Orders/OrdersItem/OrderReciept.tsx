@@ -45,9 +45,9 @@ function OrderReciept(props: any) {
                               (val.options || []).map((addval: any, ind2: number) => {
                                 extraPrice = extraPrice + addval.option_price
                                 return (
-                                  <>
+                                  <span key={ind2}>
                                     {(ind2 !== 0 ? " + " : "") + (isEnglish ? addval.option_title + ' Size' : addval.option_title_arab + 'مقاس ')}
-                                  </>
+                                  </span>
                                 )
                               })
                             }
@@ -57,9 +57,9 @@ function OrderReciept(props: any) {
                               (val.addons || []).map((addval: any, ind2: number) => {
                                 extraPrice = extraPrice + addval.addon_price
                                 return (
-                                  <>
+                                  <span key={ind2}>
                                     {(ind2 !== 0 ? " + " : "") + (isEnglish ? addval.title : addval.title_arab)}
-                                  </>
+                                  </span>
                                 )
                               })
                             }
@@ -68,9 +68,9 @@ function OrderReciept(props: any) {
                             {
                               (val.excluded || []).map((addval: any, ind2: number) => {
                                 return (
-                                  <>
+                                  <span key={ind2}>
                                     {(ind2 !== 0 ? " - " : "") + (isEnglish ? addval.title : addval.title_arab)}
-                                  </>
+                                  </span>
                                 )
                               })
                             }
@@ -109,9 +109,8 @@ function OrderReciept(props: any) {
               {
                 (data?.tax || []).map((value: any, index: number) => {
                   return (
-                    <>
-                      <div className='flex justify-between text-[10px] font-bold '><p>{isEnglish ? "Tax " : " ضريبة"}{index + 1}</p><p>{(value || 0).toFixed(3)} {isEnglish ? "OMR" : "ريال"}</p></div>
-                    </>
+                    <div key={index} className='flex justify-between text-[10px] font-bold '><p>{isEnglish ? "Tax " : " ضريبة"}{index + 1}</p><p>{(value || 0).toFixed(3)} {isEnglish ? "OMR" : "ريال"}</p></div>
+
                   )
                 })
               }
@@ -119,7 +118,7 @@ function OrderReciept(props: any) {
               <div className='flex justify-between text-[10px] font-bold'><p>{isEnglish ? "Merchant Deleivery" : "تسليم التاجر"}</p><p>{(1 || 0).toFixed(3)} {isEnglish ? "OMR" : "ريال"}</p></div>
               <div className='flex justify-between text-[10px] font-bold'><p>{isEnglish ? "Discout Coupon" : "كوبون الخصم"}</p><p>{(data.tasleem_discount || 0).toFixed(3)} {isEnglish ? "OMR" : "ريال"}</p></div>
               <div className='flex justify-between text-[10px] font-bold mt-4'><p>{isEnglish ? "Total" : "المجموع"}</p><p>{data.total_price.toFixed(3)} {isEnglish ? "OMR" : "ريال"}</p></div>
-            </div>
+            </div >
           </div>
         </div>
       </div>

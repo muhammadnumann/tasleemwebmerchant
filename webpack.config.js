@@ -1,8 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  env: {
-    NEXT_PUBLIC_API_URL: 'https://tasleem.in/api/frontend/web/index.php?'
-  },
+// next.config.js
+module.exports = {
+  // Other Next.js configurations...
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(wav|mp3|ogg)$/,
@@ -21,5 +19,3 @@ const nextConfig = {
     return config
   }
 }
-
-module.exports = nextConfig

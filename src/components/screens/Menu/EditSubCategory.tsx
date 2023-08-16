@@ -80,7 +80,6 @@ function EditSubCategory({ data, closeModal, setIsOpen, isOpen }: any) {
               <div className='cursor-pointer absolute right-0 top-[-10px]'>
                 <span
                   onClick={() => {
-                    console.log("numan")
                     DeleteSubCategory({ id: data?.id })
                   }}
                   className='text-red-500 font-bold text-sm'

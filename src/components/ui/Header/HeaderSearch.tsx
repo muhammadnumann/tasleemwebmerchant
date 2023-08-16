@@ -3,14 +3,16 @@
 import searchIcon from '@/public/images/search_icn.svg'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const HeaderSearch = () => {
   const t = useTranslations('Header')
   const [text, setText] = useState('')
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   return (
-    <div className='relative w-full min-[820px]:w-[300px] xl:w-[373px]'>
+    <div className='relative w-full min-[820px]:w-[300px] xl:w-[373px]' ref={inputRef}>
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}
