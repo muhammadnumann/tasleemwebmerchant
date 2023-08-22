@@ -3,7 +3,6 @@ import { postRequest } from '.'
 import { getLocalStorage } from '../store/Auth/AuthActions'
 import { DELETE_PRODUCT, UPDATE_PRODUCT } from './ApiConstants'
 import { UploadProductImage, addProductAddon, addProductParameter } from './Product'
-import { IParameter } from '@/components/screens/Menu/IProductAdd.interface'
 
 export const EditProductHandler = async (data: any) => {
   const formData = new FormData()

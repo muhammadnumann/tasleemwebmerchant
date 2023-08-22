@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux'
 import { ApiCalled } from '@/redux/store/ApiLoading/ApiLoadingSlice'
 import Options from './Options'
 import Loader from '@/components/ui/Dailog/loader'
+import Exclude from './Exclude'
 
 function ProductManagerModal() {
   const [isOpen, setIsOpen] = useState(false)
@@ -65,6 +66,14 @@ function ProductManagerModal() {
     remove: AddonsRemove
   } = useFieldArray({
     name: 'addon',
+    control
+  })
+  const {
+    fields: ExcludeField,
+    append: ExcludeAppend,
+    remove: ExcludeRemove
+  } = useFieldArray({
+    name: 'exclude',
     control
   })
 
@@ -307,6 +316,13 @@ function ProductManagerModal() {
                 fields={AddonsField}
                 append={AddonsAppend}
                 remove={AddonsRemove}
+                control={control}
+                register={register}
+              />
+              <Exclude
+                fields={ExcludeField}
+                append={ExcludeAppend}
+                remove={ExcludeRemove}
                 control={control}
                 register={register}
               />

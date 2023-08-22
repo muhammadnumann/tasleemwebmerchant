@@ -35,6 +35,7 @@ export const DIRECT_OFFER_DETAIL: string =
 export const UPDATE_DIRECT_OFFER_DETAIL: string =
   'r=api/account-retailer/update-offers'
 export const ADD_ADDONS: string = 'r=api/products/add-addon'
+export const ADD_EXCLUDE: string = 'r=api/products/add-exclude'
 export const ADD_PARAMETERS: string = 'r=api/products/add-parameter'
 export const PRODUCT_DETAIL: string = 'r=api/products/details'
 export const UPDATE_PRODUCT: string = 'r=api/products/update'

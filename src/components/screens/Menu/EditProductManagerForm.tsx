@@ -8,7 +8,7 @@ import { useFieldArray, useForm } from 'react-hook-form'
 import Select from '@/components/ui/Select/Select'
 import Addons from './Addons'
 import { IProdutFormValues } from './IProductAdd.interface'
-import { ProductCategory } from '@/redux/services/Product'
+import { ProductSubCategory } from '@/redux/services/Product'
 import { ISelectItem } from '@/components/ui/Select/select.interface'
 import ProductImgUploader from './ProductImgUploader'
 import { DeleteProductHandler, EditProductHandler } from '@/redux/services/addons'
@@ -16,6 +16,7 @@ import Options from './Options'
 import { useDispatch } from 'react-redux'
 import { ApiCalled } from '@/redux/store/ApiLoading/ApiLoadingSlice'
 import Loader from '@/components/ui/Dailog/loader'
+import Exclude from './Exclude'
 
 interface Ivalue {
   data: any
@@ -31,7 +32,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
 
   const CategoryList = async () => {
     try {
-      const res = await ProductCategory()
+      const res = await ProductSubCategory()
       setResult(
         res.data.map((v: any) => {
           return { label: v.title, value: v?.id }
@@ -94,7 +95,20 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
             }
           })
         }
-      })
+      }),
+      // exclude: data?.exclude.map((val: any) => {
+      //   return {
+      //     product_id: val.product_id,
+      //     id: val.id,
+      //     title: val.title,
+      //     title_arab: val.title_arab,
+      //     description: val.description,
+      //     description_arab: val.description_arab,
+      //     price: val.price,
+      //     isNew: 0
+      //   }
+      // }),
+
     }
   })
 
@@ -127,6 +141,14 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
     remove: AddonsRemove
   } = useFieldArray({
     name: 'addon',
+    control
+  })
+  const {
+    fields: ExcludeField,
+    append: ExcludeAppend,
+    remove: ExcludeRemove
+  } = useFieldArray({
+    name: 'exclude',
     control
   })
   const dispatch = useDispatch()
@@ -355,6 +377,13 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
               append={AddonsAppend}
               remove={AddonsRemove}
               control={control}
+            />
+            <Exclude
+              fields={ExcludeField}
+              append={ExcludeAppend}
+              remove={ExcludeRemove}
+              control={control}
+              register={register}
             />
           </div>
           <div className='w-full px-11'>

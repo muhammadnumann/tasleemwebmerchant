@@ -13,6 +13,15 @@ export interface IAddons {
   price: number
   isNew?: number
 }
+export interface IExclude {
+  product_id: number
+  title: string
+  title_arab: string
+  description: string
+  description_arab: string
+  price: number
+  isNew?: number
+}
 
 export interface IParameterOption {
   id?: number
@@ -62,6 +71,6 @@ export interface IProdutFormValues {
 
   Parameter?: IParameter[]
   addon?: IAddons[]
-  excluded?: any[]
+  exclude?: IExclude[]
 }
 

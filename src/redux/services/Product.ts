@@ -15,7 +15,8 @@ import {
   ADD_PARAMETERS,
   PRODUCT_DETAIL,
   CHANGE_SUBCATEGORY_STATUS,
-  DELETE_SUBCATEGORY
+  DELETE_SUBCATEGORY,
+  ADD_EXCLUDE
 } from './ApiConstants'
 
 export const ProductListingApi = async (data: any) => {
@@ -110,10 +111,13 @@ export const CreateProduct = async (data: any) => {
 
   const images = data?.image
   let addons = data?.addon
+  let exclude = data?.exclude
   let Parameter = data?.Parameter
 
   delete data?.image
   delete data?.addon
+  delete data?.exclude
+  delete data?.Parameter
 
   let i
   formData.append('vendor_id', user.userRetailer.id)
@@ -155,6 +159,16 @@ export const CreateProduct = async (data: any) => {
       })
 
       await addProductAddon(addons, false)
+    }
+    if (res?.data?.product?.id && exclude?.length) {
+      exclude = exclude.map((item: any) => {
+        return {
+          ...item,
+          product_id: res?.data?.product?.id
+        }
+      })
+
+      await addProductExclude(exclude, false)
     }
 
     if (res.status === true) SuccessDialog(res.message)
@@ -209,6 +223,42 @@ export const addProductAddon = async (data: any, isPop = true) => {
 
   try {
     const res = await postRequest(ADD_ADDONS, formData)
+    if (isPop) {
+      if (res.status === true) SuccessDialog(res.message)
+      else ErrorDialog(res)
+    }
+    return res
+  } catch (error) {
+    ErrorDialog(error)
+  }
+}
+export const addProductExclude = async (data: any, isPop = true) => {
+  const formData = new FormData()
+  const user = getLocalStorage('userData')
+  const token = localStorage.getItem('token')
+
+  formData.append('apiToken', token + '')
+
+  // for (let i = 0; i < data?.length; i++) {
+  //   formData.append(`exclude[${i}][product_id]`, data[i]?.product_id)
+  //   formData.append(`exclude[${i}][description]`, data[i]?.description)
+  //   formData.append(`exclude[${i}][description_arab]`, data[i]?.description_arab)
+  //   formData.append(`exclude[${i}][price]`, data[i]?.price)
+  //   formData.append(`exclude[${i}][title]`, data[i]?.title)
+  //   formData.append(`exclude[${i}][title_arab]`, data[i]?.title_arab)
+  // }
+
+  for (let i = 0; i < data?.length; i++) {
+    formData.append(`product_id`, data[i]?.product_id)
+    formData.append(`description`, data[i]?.description)
+    formData.append(`description_arab`, data[i]?.description_arab)
+    formData.append(`price`, data[i]?.price)
+    formData.append(`title`, data[i]?.title)
+    formData.append(`title_arab`, data[i]?.title_arab)
+  }
+
+  try {
+    const res = await postRequest(ADD_EXCLUDE, formData)
     if (isPop) {
       if (res.status === true) SuccessDialog(res.message)
       else ErrorDialog(res)
