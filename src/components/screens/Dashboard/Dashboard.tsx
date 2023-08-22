@@ -10,12 +10,12 @@ import { AddDashboardData } from "@/redux/store/Dashboard"
 import Reviews from "./Reviews"
 
 const Dashboard = () => {
-
-  const [loading, setloading] = useState(true)
+  const [loading, setloading] = useState(false)
   const dispatch = useDispatch()
   const data = useSelector((state: any) => state?.Dashboard?.Data)
 
   const fetchData = async () => {
+    setloading(true)
     try {
       const res = await DashbpardApiHandler()
       dispatch(AddDashboardData({ data: res.data }))

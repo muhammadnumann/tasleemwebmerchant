@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux'
 import { ApiCalled } from '@/redux/store/ApiLoading/ApiLoadingSlice'
 import Loader from '@/components/ui/Dailog/loader'
 import Exclude from './Exclude'
+import { useLang } from '@/hooks/useLang'
 
 interface Ivalue {
   data: any
@@ -26,6 +27,8 @@ interface Ivalue {
 function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
   const [selectedCategory, setSelectedCategory] = useState(CategoryOptions[0])
   const [loading, setloading] = useState(false)
+  const { isEnglish } = useLang()
+
   const [result, setResult] = useState<ISelectItem[]>([
     { label: 'Select Category', value: 0 }
   ])
@@ -35,7 +38,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
       const res = await ProductSubCategory()
       setResult(
         res.data.map((v: any) => {
-          return { label: v.title, value: v?.id }
+          return { label: isEnglish ? v.title : v.title_ar, value: v?.id }
         })
       )
     } catch (error) { }
@@ -183,7 +186,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
                 labelClass='text-black'
               />
             </div>
-            <h2 className='text-xl font-bold'>Product Manager</h2>
+            <h2 className='text-xl font-bold'>{isEnglish ? 'Product Manager' : 'مدير الإنتاج'}</h2>
             <div className='ml-auto'>
               <span
                 onClick={() => {
@@ -191,7 +194,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
                 }}
                 className='text-red-500 font-bold text-sm cursor-pointer'
               >
-                Delete
+                {isEnglish ? 'Delete' : 'يمسح'}
               </span>
             </div>
           </div>
@@ -200,7 +203,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
             <div className='grid grid-cols-2 gap-20 w-full px-11'>
               <div>
                 <div className='text-[#00C2FF] bg-[#BFEFFF] font-bold text-center py-2 rounded-full mb-5'>
-                  English
+                  {isEnglish ? 'English' : 'إنجليزي'}
                 </div>
                 <div>
                   <Input
@@ -215,7 +218,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
                         }
                       }
                     }}
-                    placeholder={'English Name'}
+                    placeholder={isEnglish ? 'English Name' : 'الاسم الانجليزي'}
                     className='!px-0.5 text-xs'
                     {...register('title', {
                       required: { value: true, message: 'Field is Required' }
@@ -239,7 +242,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
                       }
                     }}
                     type='textarea'
-                    placeholder={'Description'}
+                    placeholder={isEnglish ? 'Description' : 'وصف'}
                     className='!px-0.5 text-xs'
                     {...register('description', {
                       required: { value: true, message: 'Field is Required' }
@@ -254,7 +257,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
               </div>
               <div>
                 <div className='text-[#00C2FF] bg-[#BFEFFF] font-bold text-center py-2 rounded-full mb-5'>
-                  Arabic
+                  {isEnglish ? 'Arabic' : 'عربي'}
                 </div>
                 <div>
                   <Input
@@ -318,7 +321,7 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
                       required: { value: true, message: 'Field is Required' }
                     }
                   }}
-                  placeholder={'Price 0.000 OMR'}
+                  placeholder={isEnglish ? 'Price 0.000 OMR' : 'السعر 0.000 ريال عماني'}
                   className='!px-0.5 text-lg'
                   {...register('price', {
                     required: { value: true, message: 'Field is Required' }
@@ -394,10 +397,10 @@ function EditProductManagerForm({ data, seteditisOpen, closeModal }: Ivalue) {
               className='text-red-500 text-lg font-bold cursor-pointer'
               onClick={() => closeModal()}
             >
-              Cancel
+              {isEnglish ? 'Cancel' : 'يلغي'}
             </button>
             <div className='text-[#AFAFAF] text-sm mt-4 absolute left-[20px] bottom-[5px]'>
-              Created At {moment(new Date()).format('MMM DD, YYYY HH:MM')}
+              {isEnglish ? 'Created At' : 'أنشئت في'} {moment(new Date()).format('MMM DD, YYYY HH:MM')}
             </div>
             <ProductImgUploader register={register} name='image' />
             <SaveButton className='mx-auto' type='submit' />

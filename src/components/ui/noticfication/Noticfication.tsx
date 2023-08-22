@@ -18,7 +18,6 @@ const Noticfication: React.FC = () => {
   const [selectedData, setSelectedData] = useState<any>()
 
   const openNotification = (placement: NotificationPlacement, Noticficationdata: any) => {
-    console.log(Noticficationdata)
     new Audio(sound).play()
     api.info({
       message: <div className='cursor-pointer'>{`${Noticficationdata?.title}`}</div>,

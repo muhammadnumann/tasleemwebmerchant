@@ -18,24 +18,24 @@ export const navigationItems: INavigationItem[] = [
     text: 'dashboard',
     defaultIcon: dashboardIcon,
     activeIcon: dashboardAIcon,
-    url: '/dashboard'
+    url: './dashboard'
   },
   {
     text: 'orders',
     defaultIcon: cartIcon,
     activeIcon: cartAIcon,
-    url: '/orders'
+    url: './orders'
   },
   {
     text: 'menu',
     defaultIcon: menuIcon,
     activeIcon: menuAIcon,
-    url: '/menu'
+    url: './menu'
   },
   {
     text: 'account',
     defaultIcon: accountIcon,
     activeIcon: accountAIcon,
-    url: '/account'
+    url: './account'
   }
 ]

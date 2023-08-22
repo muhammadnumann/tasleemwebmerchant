@@ -11,31 +11,31 @@ export const accountMenuItems: IAccountMenuItem[] = [
   {
     text: 'manage-profile',
     Icon: BiUser,
-    url: '/account/manage-profile'
+    url: './account/manage-profile'
   },
   {
     text: 'offers-management',
     Icon: HiOutlineTicket,
-    url: '/account/offers-management'
+    url: './account/offers-management'
   },
   {
     text: 'taxes',
     Icon: IoFileTrayFullSharp,
-    url: '/account/taxes'
+    url: './account/taxes'
   },
   {
     text: 'time-setup',
     Icon: AiOutlineClockCircle,
-    url: '/account/time-setup'
+    url: './account/time-setup'
   },
   {
     text: 'printers',
     Icon: AiOutlinePrinter,
-    url: '/account/printers'
+    url: './account/printers'
   },
   {
     text: 'settings',
     Icon: FiSettings,
-    url: '/account/settings'
+    url: './account/settings'
   }
 ]
